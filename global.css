@@ -1,8 +1,134 @@
-/* ==========================================================================
-   1. RESET, BASE & VARIABLES
-   ========================================================================== */
+/* ===== FOOTER STYLES ===== */
+.global-footer { 
+    margin-top: 200px; 
+    padding-top: 40px; 
+    background-color: #f5f5f7; 
+}
 
-/* Reset y base (Normalización mínima) */
+.global-footer__nav { 
+    padding-bottom: 40px; 
+}
+
+.global-footer__nav-columns { 
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: space-between; 
+}
+
+.global-footer__nav-title { 
+    font-size: 12px; 
+    font-weight: 600; 
+    color: #0f0f0f; 
+    letter-spacing: -0.01em; 
+}
+
+.global-footer__nav-links+.global-footer__nav-title {
+    margin-top: 27px; 
+}
+
+.global-footer__nav-links { 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.global-footer__nav-title+.global-footer__nav-links {
+    margin-top: 12px; 
+}
+
+.global-footer__nav-link { 
+    font-size: 12px; 
+    color: #0f0f0f; 
+    letter-spacing: -0.01em; 
+    opacity: .8; 
+}
+
+.hover .global-footer__nav-link:hover { 
+    opacity: .5 !important; 
+}
+
+.global-footer__nav-link+.global-footer__nav-link { 
+    margin-top: 8px; 
+}
+
+.global-footer__copyright { 
+    padding-top: 11px !important; 
+    padding-bottom: 34px !important; 
+    margin-top: 0 !important; 
+    border-top: 1px solid #cecece; 
+}
+
+.global-footer__copyright-text { 
+    font-size: 12px; 
+    color: #86868b; 
+    line-height: 1.45; 
+}
+
+/* Footer responsive */
+@media only screen and (max-width: 767px) { 
+    .global-footer__nav-columns {
+        flex-direction: column; 
+    }
+    
+    .global-footer__nav-column {
+        width: 100%; 
+    }
+    
+    .global-footer__nav-title { 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        padding-top: 13px; 
+        padding-bottom: 10px; 
+        cursor: pointer; 
+    }
+    
+    .global-footer__nav-links+.global-footer__nav-title { 
+        margin-top: 0; 
+    }
+    
+    .global-footer__nav-links {
+        width: 100%; 
+        max-height: 1px; 
+        padding-left: 6px; 
+        border-bottom: 1px solid #cecece; 
+    }
+    
+    .global-footer__nav-links.is-opened { 
+        max-height: 250px; 
+    }
+    
+    .global-footer__nav-title+.global-footer__nav-links { 
+        margin-top: 0; 
+        padding-top: 0; 
+    }
+    
+    .global-footer__nav-link { 
+        visibility: hidden; 
+        opacity: 0; 
+        pointer-events: none; 
+    }
+    
+    .hover .global-footer__nav-link:hover { 
+        opacity: .8 !important; 
+    }
+    
+    .global-footer__nav-link:last-of-type { 
+        padding-bottom: 13px; 
+    }
+    
+    .global-footer__nav-links.is-active .global-footer__nav-link { 
+        visibility: visible; 
+        opacity: .8; 
+        pointer-events: all; 
+    }
+    
+    .global-footer__nav-links.is-closing .global-footer__nav-link { 
+        opacity: 0; 
+        pointer-events: none; 
+    }
+}
+
+/* Reset y base */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { 
     margin: 0; 
     padding: 0; 
@@ -29,7 +155,7 @@ table {
     border-spacing: 0;
 }
 
-/* Variables */
+/* Variables y tipografía */
 :root {
     --font-main: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica", sans-serif;
     --black: #000000;
@@ -41,11 +167,9 @@ table {
     --accent-blue: #026fc9;
     --accent-blue--hover: #358cd4;
     --accent-pink: #ff4169;
-    --accent-pink--hover: #ff6482; /* Añadida para consistencia */
     --accent-ml: #ffcc00;
 }
 
-/* Tipografía Base */
 html {
     font-family: var(--font-main);
     font-weight: 400;
@@ -70,7 +194,7 @@ picture {
     display: block;
 }
 
-/* Tipografía Escalable */
+/* Tipografía escalable */
 .type-xl, .templatesHero__mainTitle {
     font-size: 60px;
     font-weight: 600;
@@ -110,7 +234,7 @@ picture {
     letter-spacing: -0.002em;
 }
 
-/* Layout - Contenedores Reutilizables */
+/* Layout */
 .l-wrapper {
     width: calc(100% - 80px);
     padding: 0 40px;
@@ -134,11 +258,7 @@ picture {
     margin-left: auto;
 }
 
-/* ==========================================================================
-   2. NAVIGATION (Main & Current Page)
-   ========================================================================== */
-
-/* Main Nav */
+/* Navegación principal */
 .main-nav {
     position: relative;
     top: 0;
@@ -186,14 +306,14 @@ picture {
     z-index: 2;
     width: 100%;
     height: 1px;
-    background-color: var(--dark-text); /* Uso de variable */
+    background-color: #0f0f0f;
 }
 
 .main-nav__nav-link.is-active span {
     opacity: 1;
 }
 
-/* Current Page Nav (Sticky Sub-nav) */
+/* Página actual */
 .current-page {
     position: sticky;
     position: -webkit-sticky;
@@ -269,10 +389,10 @@ picture {
     padding: 0 11px;
     font-size: 12px;
     font-weight: 500;
-    color: var(--white);
+    color: #fff;
     line-height: 24px;
     letter-spacing: -0.01em;
-    background-color: var(--accent-pink);
+    background-color: #ff4169;
     border: 0;
     border-radius: 30px;
     cursor: pointer;
@@ -280,52 +400,10 @@ picture {
 }
 
 .hover .current-page__cta-btn:hover {
-    background-color: var(--accent-pink--hover);
+    background-color: #ff6482;
 }
 
-/* ==========================================================================
-   3. SECTION STYLES (Hero, Tools, Draw, etc.)
-   ========================================================================== */
-
-/* General Section Styling */
-.tools, .draw {
-    padding: 178px 0 188px;
-    color: var(--light-text);
-    background-color: var(--black);
-}
-
-.design, .repair, .select, .text, .photos-app, .advanced, .mac-app, .mac-technologies, .awards {
-    padding: 178px 0 188px;
-    color: var(--dark-text);
-    background-color: var(--white);
-}
-
-.remove-bg, .ml {
-    padding: 178px 0 10px;
-    color: var(--dark-text);
-    background-color: var(--light-gray);
-}
-
-/* Section Headers */
-.tools__header, .draw__header, .design__header, .remove-bg__header, .ml__header, .repair__header, .select__header, .text__header, .photos-app__header, .advanced__header, .mac-app__header, .mac-technologies__header, .awards__header {
-    text-align: center;
-}
-
-.tools__title, .draw__title, .design__title, .remove-bg__title, .ml__title, .repair__title, .select__title, .text__title, .photos-app__title, .advanced__title, .mac-app__title, .mac-technologies__title, .awards__title {
-    max-width: 680px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.tools__description, .draw__description, .design__description, .remove-bg__description, .ml__description, .repair__description, .select__description, .text__description, .photos-app__description, .advanced__description, .mac-app__description, .mac-technologies__description, .awards__description {
-    max-width: 680px;
-    margin-top: 23px;
-    margin-right: auto;
-    margin-left: auto;
-    color: var(--gray);
-}
-
-/* Hero Section */
+/* Hero section */
 .hero {
     padding: 200px 20px 178px;
     background-color: var(--white);
@@ -359,7 +437,7 @@ picture {
     line-height: 1.48;
 }
 
-/* Buy/Try Buttons */
+/* Botones de compra */
 .buy-try-buttons {
     margin-top: 32px;
     text-align: center;
@@ -374,30 +452,91 @@ picture {
     padding-left: 4px;
     font-size: 14px;
     font-weight: 500;
-    color: var(--accent-pink);
+    color: #ff4169;
     letter-spacing: -0.02em;
-    border: 1px solid var(--accent-pink);
+    border: 1px solid #ff4169;
     border-radius: 30px;
     transition: border-color 130ms ease-in-out, color 130ms ease-in-out, background-color 130ms ease-in-out;
 }
 
 .hover .buy-try-buttons__item:nth-child(1):hover {
-    color: var(--white);
-    background-color: var(--accent-pink--hover);
-    border-color: var(--accent-pink--hover);
+    color: #fff;
+    background-color: #ff6482;
+    border-color: #ff6482;
 }
 
 .buy-try-buttons__item:nth-child(2) {
-    color: var(--white);
-    background-color: var(--accent-pink);
+    color: #fff;
+    background-color: #ff4169;
 }
 
 .hover .buy-try-buttons__item:nth-child(2):hover {
-    background-color: var(--accent-pink--hover);
-    border-color: var(--accent-pink--hover);
+    background-color: #ff6482;
+    border-color: #ff6482;
 }
 
-/* Artwork & Video */
+/* Secciones principales */
+.tools, .draw {
+    padding: 178px 0 188px;
+    color: var(--light-text);
+    background-color: var(--black);
+}
+
+.design, .repair, .select, .text, .photos-app, .advanced, .mac-app, .mac-technologies, .awards {
+    padding: 178px 0 188px;
+    color: var(--dark-text);
+    background-color: var(--white);
+}
+
+.remove-bg, .ml {
+    padding: 178px 0 10px;
+    color: var(--dark-text);
+    background-color: var(--light-gray);
+}
+
+/* Encabezados de sección */
+.tools__header, .draw__header, .design__header, .remove-bg__header, .ml__header, .repair__header, .select__header, .text__header, .photos-app__header, .advanced__header, .mac-app__header, .mac-technologies__header, .awards__header {
+    text-align: center;
+}
+
+.tools__title, .draw__title, .design__title, .remove-bg__title, .ml__title, .repair__title, .select__title, .text__title, .photos-app__title, .advanced__title, .mac-app__title, .mac-technologies__title, .awards__title {
+    max-width: 680px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.tools__description, .draw__description, .design__description, .remove-bg__description, .ml__description, .repair__description, .select__description, .text__description, .photos-app__description, .advanced__description, .mac-app__description, .mac-technologies__description, .awards__description {
+    max-width: 680px;
+    margin-top: 23px;
+    margin-right: auto;
+    margin-left: auto;
+    color: var(--gray);
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 896px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cards__item {
+    border-radius: 20px;
+}
+
+.cards__item-info {
+    box-sizing: border-box;
+    padding: 50px;
+}
+
+.cards__item-description {
+    margin-top: 6px;
+    opacity: .77;
+}
+
+/* Artwork y video */
 .artwork {
     box-sizing: border-box;
     width: 100%;
@@ -426,30 +565,7 @@ picture {
     border-radius: 20px;
 }
 
-/* Cards */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 896px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.cards__item {
-    border-radius: 20px;
-}
-
-.cards__item-info {
-    box-sizing: border-box;
-    padding: 50px;
-}
-
-.cards__item-description {
-    margin-top: 6px;
-    opacity: .77;
-}
-
-/* Templates Hero (Parallax) */
+/* Templates Hero */
 .templatesHero {
     overflow: hidden;
     width: 100%;
@@ -512,11 +628,11 @@ picture {
 .templatesHero__description {
     max-width: 680px;
     margin: 23px auto 0;
-    color: var(--gray); /* Uso de variable */
+    color: #333;
     text-align: center;
 }
 
-/* Workspace Showcase */
+/* Workspace showcase */
 .workspace__showcase {
     box-sizing: border-box;
     width: 100%;
@@ -618,7 +734,7 @@ picture {
     opacity: .77;
 }
 
-/* Buy Footer */
+/* Footer de compra */
 .buy {
     padding-top: 200px;
     padding-bottom: 200px;
@@ -635,7 +751,7 @@ picture {
     margin-top: 16px;
     font-size: 32px;
     font-weight: 700;
-    color: var(--dark-text);
+    color: #0f0f0f;
     letter-spacing: -0.002em;
 }
 
@@ -644,7 +760,7 @@ picture {
     margin: 6px auto 0;
     padding: 4px 0;
     font-size: 20px;
-    color: var(--gray);
+    color: #333;
     line-height: 28px;
 }
 
@@ -656,10 +772,10 @@ picture {
     margin-top: 18px;
     font-size: 14px;
     font-weight: 500;
-    color: var(--white);
+    color: #fff;
     line-height: 36px;
     letter-spacing: -0.02em;
-    background-color: var(--accent-pink);
+    background-color: #ff4169;
     border: 0;
     border-radius: 30px;
     cursor: pointer;
@@ -667,91 +783,16 @@ picture {
 }
 
 .hover .buy__btn:hover {
-    background-color: var(--accent-pink--hover);
+    background-color: #ff6482;
 }
 
-/* ==========================================================================
-   4. FOOTER STYLES (global-footer)
-   ========================================================================== */
-
-.global-footer { 
-    margin-top: 200px; 
-    padding-top: 40px; 
-    background-color: var(--light-text); /* Uso de variable */
-}
-
-.global-footer__nav { 
-    padding-bottom: 40px; 
-}
-
-.global-footer__nav-columns { 
-    display: flex; 
-    align-items: flex-start; 
-    justify-content: space-between; 
-}
-
-.global-footer__nav-title { 
-    font-size: 12px; 
-    font-weight: 600; 
-    color: var(--dark-text); /* Uso de variable */
-    letter-spacing: -0.01em; 
-}
-
-.global-footer__nav-links + .global-footer__nav-title {
-    margin-top: 27px; 
-}
-
-.global-footer__nav-links { 
-    display: flex; 
-    flex-direction: column; 
-}
-
-.global-footer__nav-title + .global-footer__nav-links {
-    margin-top: 12px; 
-}
-
-.global-footer__nav-link { 
-    font-size: 12px; 
-    color: var(--dark-text); /* Uso de variable */
-    letter-spacing: -0.01em; 
-    opacity: .8; 
-    transition: opacity 130ms ease-in-out; /* Añadida transición para el hover */
-}
-
-.hover .global-footer__nav-link:hover { 
-    opacity: .5 !important; 
-}
-
-.global-footer__nav-link + .global-footer__nav-link { 
-    margin-top: 8px; 
-}
-
-.global-footer__copyright { 
-    /* Se mantienen los !important del original, aunque es mejor evitarlos */
-    padding-top: 11px !important; 
-    padding-bottom: 34px !important; 
-    margin-top: 0 !important; 
-    border-top: 1px solid #cecece; 
-}
-
-.global-footer__copyright-text { 
-    font-size: 12px; 
-    color: #86868b; 
-    line-height: 1.45; 
-}
-
-/* ==========================================================================
-   5. RESPONSIVE / MEDIA QUERIES
-   ========================================================================== */
-
-/* Tablet - Max Width 1135px */
+/* Responsive */
 @media only screen and (max-width: 1135px) {
     .wrapper {
         padding: 0 20px;
     }
 }
 
-/* Tablet Pequeña - Max Width 850px */
 @media only screen and (max-width: 850px) {
     .l-wrapper {
         width: calc(100% - 40px);
@@ -772,14 +813,11 @@ picture {
     }
 }
 
-/* Mobile - Max Width 767px */
 @media only screen and (max-width: 767px) {
-    /* Tipografía */
     .type-xl, .templatesHero__mainTitle {
         font-size: 40px;
     }
     
-    /* Padding de Secciones */
     .hero, .tools, .draw, .design, .repair, .select, .text, .photos-app, .advanced, .mac-app, .mac-technologies, .awards {
         padding: 100px 20px 89px;
     }
@@ -793,7 +831,6 @@ picture {
         padding-bottom: 89px;
     }
     
-    /* Layouts y Componentes */
     .templatesHero__artwork {
         max-height: 463px;
     }
@@ -861,182 +898,8 @@ picture {
         top: 10px;
         left: 10px;
     }
-    
-    /* Footer Responsive */
-    .global-footer__nav-columns {
-        flex-direction: column; 
-    }
-    
-    .global-footer__nav-column {
-        width: 100%; 
-    }
-    
-    .global-footer__nav-title { 
-        display: flex; 
-        align-items: center; 
-        justify-content: space-between; 
-        padding-top: 13px; 
-        padding-bottom: 10px; 
-        cursor: pointer; 
-        /* Se añade transición para el icono/flecha (si existe en HTML) */
-    }
-    
-    .global-footer__nav-links + .global-footer__nav-title { 
-        margin-top: 0; 
-    }
-    
-    .global-footer__nav-links {
-        width: 100%; 
-        max-height: 0; /* Cambio a 0 para el colapso */
-        padding-left: 6px; 
-        border-bottom: 1px solid #cecece; 
-        overflow: hidden; /* Importante para la transición de altura */
-        transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Añadida transición */
-    }
-    
-    .global-footer__nav-links.is-opened { 
-        max-height: 250px; /* Suficientemente grande para el contenido */
-        /* Se podría ajustar el padding-top/bottom aquí si fuera necesario */
-    }
-    
-    .global-footer__nav-title + .global-footer__nav-links { 
-        margin-top: 0; 
-        padding-top: 0; 
-    }
-    
-    .global-footer__nav-link { 
-        /* Usar una transición más clara para la visibilidad/opacidad */
-        visibility: hidden; 
-        opacity: 0; 
-        pointer-events: none; 
-        transition: visibility 0s 0.3s, opacity 0.3s ease-in-out, margin 0.3s ease-in-out; 
-    }
-    
-    .hover .global-footer__nav-link:hover { 
-        opacity: .8 !important; 
-    }
-    
-    .global-footer__nav-link:last-of-type { 
-        padding-bottom: 13px; 
-    }
-    
-    .global-footer__nav-links.is-opened .global-footer__nav-link { /* Cambiado de is-active a is-opened */
-        visibility: visible; 
-        opacity: .8; 
-        pointer-events: all; 
-        transition: opacity 0.3s ease-in-out 0.3s; /* Retrasar la aparición de opacidad */
-    }
-
-    /* Clase is-closing mantenida para casos de uso avanzados, pero se podría eliminar si solo se usa is-opened */
-    .global-footer__nav-links.is-closing .global-footer__nav-link { 
-        opacity: 0; 
-        pointer-events: none; 
-    }
-
-    /**/
-
-   .advanced {
-    padding: 80px 0;
-    background: #f8f9fa;
 }
 
-    .advanced__wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .advanced__header {
-        text-align: center;
-        margin-bottom: 60px;
-    }
-
-    .advanced__header h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: #333;
-    }
-
-    .advanced__header p {
-        font-size: 1.2rem;
-        color: #666;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .advanced__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
-        align-items: start;
-    }
-
-    .advanced__item {
-        text-align: center;
-        padding: 30px 20px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .advanced__item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .advanced__icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 20px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .advanced__icon svg {
-        width: 40px;
-        height: 40px;
-        color: white;
-    }
-
-    .advanced__title {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-        color: #333;
-        font-weight: 600;
-    }
-
-    .advanced__description {
-        color: #666;
-        line-height: 1.6;
-        font-size: 1rem;
-    }
-
-   .advanced__grid--precise {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px 40px;
-}
-
-    @media (max-width: 968px) {
-        .advanced__grid--precise {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 640px) {
-        .advanced__grid--precise {
-            grid-template-columns: 1fr;
-        }
-    }
-
-
-}
-
-/* Mobile Extra Pequeño - Max Width 428px */
 @media only screen and (max-width: 428px) {
     .templatesHero__artwork {
         max-height: 232px;
