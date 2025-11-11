@@ -65,6 +65,11 @@
 
 /* Footer responsive */
 @media only screen and (max-width: 767px) { 
+    .awards__item{
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
     .global-footer__nav-columns {
         flex-direction: column; 
     }
@@ -814,6 +819,7 @@ picture {
 }
 
 @media only screen and (max-width: 767px) {
+    
     .type-xl, .templatesHero__mainTitle {
         font-size: 40px;
     }
@@ -898,6 +904,7 @@ picture {
         top: 10px;
         left: 10px;
     }
+    
 }
 
 @media only screen and (max-width: 428px) {
