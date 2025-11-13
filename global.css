@@ -1,3 +1,12 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #fff; color: #1a1a1a; line-height: 1.6; }
+    img, video { max-width: 100%; height: auto; display: block; border-radius: 12px; }
+    picture { display: block; }
+
+    /* CONTENEDOR PRINCIPAL */
+    .wrapper { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 768px) { .wrapper { padding: 0 20px; } }
+
 /* ===== FOOTER STYLES ===== */
 .global-footer { 
     margin-top: 200px; 
@@ -15,7 +24,7 @@
     justify-content: space-between; 
 }
 
-.global-footer__nav-title { 
+.global-footer__nav-title {
     font-size: 12px; 
     font-weight: 600; 
     color: #0f0f0f; 
@@ -405,8 +414,8 @@ picture {
 
 /* Hero section */
 .hero {
-    padding: 200px 20px 178px;
-    background-color: var(--white);
+      padding: 100px 0 80px;
+      background: linear-gradient(to bottom, #fdf6f6, #ffffff);
 }
 
 .hero__wrapper {
@@ -417,11 +426,21 @@ picture {
     text-align: center;
 }
 
+.hero__image-wrapper {
+      display: block;
+      margin: 48px auto;
+      max-width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
 .hero__subtitle {
-    max-width: 672px;
-    margin: 14px auto 0;
-    color: var(--dark-text);
-    text-align: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      color: #000;
 }
 
 .hero__image {
@@ -431,10 +450,23 @@ picture {
     margin: 46px auto 0;
 }
 
+.hero__image {
+      width: 100%;
+      height: auto;
+      display: block;
+}
+
 .hero__description {
     max-width: 750px;
     margin: 40px auto 0;
     line-height: 1.48;
+}
+
+.hero__description {
+      font-size: 1.25rem;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      color: #444;
 }
 
 /* Botones de compra */
@@ -457,6 +489,24 @@ picture {
     border: 1px solid #ff4169;
     border-radius: 30px;
     transition: border-color 130ms ease-in-out, color 130ms ease-in-out, background-color 130ms ease-in-out;
+}
+
+.btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,90,95,0.4);
+}
+
+.btn-buy {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--color-primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255,90,95,0.3);
 }
 
 .hover .buy-try-buttons__item:nth-child(1):hover {
@@ -870,12 +920,22 @@ picture {
         margin-top: 30px;
     }
     
+    .effects__header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 80px;
+    }
+
     .effects__columns {
         flex-direction: column;
+        gap: 40px;
+        align-items: center;
     }
     
     .effects__artwork, .effects__info {
         width: 100%;
+        text-align: center;
+
     }
     
     .text__title-artwork {
@@ -904,4 +964,26 @@ picture {
     .templatesHero__artwork {
         max-height: 232px;
     }
+}
+
+/* === AUTOCENTER: Contenido centrado y adaptable === */
+.autocenter {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Más padding en móvil para mejor legibilidad */
+@media (max-width: 768px) {
+  .autocenter {
+    padding: 0 30px;
+  }
+}
+
+/* En pantallas muy pequeñas, aún más cuidado */
+@media (max-width: 428px) {
+  .autocenter {
+    padding: 0 20px;
+  }
 }
